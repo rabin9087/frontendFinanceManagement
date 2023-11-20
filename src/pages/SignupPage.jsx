@@ -1,9 +1,13 @@
 import React from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
+import { Col, Container, Navbar, Row } from 'react-bootstrap'
 import SignupForm from '../components/SignupForm'
+import TopNav from '../components/TopNav'
 
 const SignupPage = () => {
   return (
+    <>
+      <TopNav/>
+    
     <Container fluid>
     <Row>
       <Col className="bg-info text-light vh-100 d-flex justify-content-center align-items-center">
@@ -20,6 +24,7 @@ const SignupPage = () => {
       </Col>
     </Row>
   </Container>
+  </>
   )
 }
 

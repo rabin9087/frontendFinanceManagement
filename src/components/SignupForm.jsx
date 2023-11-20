@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import CustomeInput from "./CustomeInput";
 import { postUser } from "../helper/axiosHelper";
 import { Alert, Spinner } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
   name: "",
@@ -12,6 +13,9 @@ const initialState = {
   confirmPassword: "",
 };
 const SignupForm = () => {
+
+  const navigate = useNavigate();
+
   const [form, setForm] = useState(initialState);
   const [resp, setResp] = useState({
     status: "",
@@ -76,7 +80,8 @@ const SignupForm = () => {
     setResp(data);
     setIsPending(false);
     data?.status === "success" && setForm(initialState)
-    console.log(data);
+    alert("Your account has been successfully created")
+    navigate("/")
   };
 
   return (

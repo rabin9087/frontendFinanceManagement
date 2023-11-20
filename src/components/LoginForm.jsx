@@ -4,39 +4,42 @@ import Form from "react-bootstrap/Form";
 import CustomeInput from "./CustomeInput";
 import { loginUser } from "../helper/axiosHelper";
 import { Alert, Spinner } from "react-bootstrap";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-
   const [form, setForm] = useState({});
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const [resp, setResp] = useState({});
   const navigate = useNavigate();
 
   const handelOnChange = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     setForm({
-      ...form, [name]: value
-    })
-  }
+      ...form,
+      [name]: value,
+    });
+  };
 
-  const handelOnSubmit = async(e) => {
+  const handelOnSubmit = async (e) => {
     e.preventDefault();
     setResp({});
-    setIsLoading(true)
+    setIsLoading(true);
     const result = await loginUser(form);
-    setIsLoading(false)
+    setIsLoading(false);
     console.log(result);
     //if login in success then redirect user to dashboard
 
-    if (result?.status === "success"){
+    if (result?.status === "success") {
+      //store user in session storage
+
+      sessionStorage.setItem("user", JSON.stringify(result.user));
       //redirect user
-      navigate("/dashboard")
-    } else{
-      setResp(result)
+      navigate("/dashboard");
+    } else {
+      setResp(result);
     }
     //else show error message on the page
-  }
+  };
 
   const inputs = [
     {
@@ -56,22 +59,18 @@ const LoginForm = () => {
   ];
   return (
     <Form onSubmit={handelOnSubmit}>
-
-      {
-        resp.message && <Alert variant="danger">
-          {resp.message}
-        </Alert>
-      }
+      {resp.message && <Alert variant="danger">{resp.message}</Alert>}
       {inputs.map((item, i) => (
-        <CustomeInput key={i} {...item} onChange = {handelOnChange}/>
+        <CustomeInput key={i} {...item} onChange={handelOnChange} />
       ))}
       <div className="d-grid">
         <Button variant="primary" type="submit" disabled={isLoading}>
-          {isLoading ? <Spinner animation = "border" />: "Submit"}
-          
+          {isLoading ? <Spinner animation="border" /> : "Submit"}
         </Button>
       </div>
-      <p>Are you new here? <a href="/signup">signup</a> now</p>
+      <p>
+        Are you new here? <a href="/signup">signup</a> now
+      </p>
     </Form>
   );
 };
