@@ -6,7 +6,7 @@ const SignupPage = () => {
   return (
     <Container fluid>
     <Row>
-      <Col className="bg-info text-light vh-100 d-flex justify-content-center align-items-center d-md-none">
+      <Col className="bg-info text-light vh-100 d-flex justify-content-center align-items-center">
         <div className="shadow -lg rounded p-3">
           <h1>Join our Community</h1>
           <p>Leverage our system to track your income </p>
