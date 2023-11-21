@@ -50,7 +50,7 @@ const TransTable = ({ transList, getAllTrans }) => {
     <div className="mt-2">
       <div className="text-center">
         <h1 className="text-warning m-3 text-decoration-underline">
-          Your Transation Record
+          Your Transation Records
         </h1>
       </div>
 
@@ -125,17 +125,21 @@ const TransTable = ({ transList, getAllTrans }) => {
           </tr>
         </tbody>
       </Table>
-      {idsToDeleteData.length > 0 && (
-        <div className="d-grid m-5">
-          <Button
-            variant="danger"
-            className="fw-bold f-20"
-            onClick={handelOnDelete}
-          >
-            {idsToDeleteData.length} Button
-          </Button>
-        </div>
-      )}
+
+      <div className="">
+        {idsToDeleteData.length > 0 && (
+          <div className="d-flex flex-wrap justify-content-center">
+            <Button
+              variant="danger"
+              className="fw-bold f-20 align-items-center"
+              onClick={handelOnDelete}
+            >
+              <i class="fa-solid fa-trash-can"></i> Delete{" "}
+              {idsToDeleteData.length} records
+            </Button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

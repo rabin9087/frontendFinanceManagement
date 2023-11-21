@@ -10,9 +10,9 @@ const LoginPage = () => {
     <Container fluid>
       <Row>
         <Col className="bg-primary text-light vh-100 d-flex justify-content-center align-items-center">
-          <div className="shadow -lg rounded p-3">
+          <div className="shadow-lg rounded p-3">
             <h1>Welcome Back!</h1>
-            <p>login to our system and take controll of your transication</p>
+            <p>Login to our system and take control of your transaction</p>
           </div>
         </Col>
         <Col className="d-flex justify-content-center align-items-center ">
