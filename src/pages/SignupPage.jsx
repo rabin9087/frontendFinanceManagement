@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col, Container, Navbar, Row } from 'react-bootstrap'
+import { Col, Container, Row } from 'react-bootstrap'
 import SignupForm from '../components/SignupForm'
 import TopNav from '../components/TopNav'
 

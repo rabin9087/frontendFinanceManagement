@@ -3,8 +3,15 @@ import { Alert, Button, Col, Form, Row, Spinner } from "react-bootstrap";
 import CustomeInput from "./CustomeInput";
 import { postTrans } from "../helper/axiosHelper";
 
-const TransForm = ({getAllTrans}) => {
-  const [form, setForm] = useState({});
+const TransForm = ({ getAllTrans }) => {
+  const initialFormState = {
+    type: "",
+    date: "",
+    title: "",
+    amount: "",
+  };
+
+  const [form, setForm] = useState(initialFormState);
   const [resp, setResp] = useState({});
 
   const handelOnChange = (e) => {
@@ -20,12 +27,11 @@ const TransForm = ({getAllTrans}) => {
     const result = await postTrans(form);
     setResp(result);
 
-    if(result.status === "success"){
+    if (result.status === "success") {
       getAllTrans();
     }
 
-    setForm({})
-
+    setForm(initialFormState);
   };
 
   const inputs = [
@@ -35,6 +41,7 @@ const TransForm = ({getAllTrans}) => {
       name: "date",
       required: true,
       placeholder: "",
+      value: form.date
     },
     {
       label: "Title",
@@ -42,6 +49,7 @@ const TransForm = ({getAllTrans}) => {
       name: "title",
       required: true,
       placeholder: "",
+      value: form.title,
     },
     {
       label: "Amount",
@@ -49,11 +57,12 @@ const TransForm = ({getAllTrans}) => {
       name: "amount",
       required: true,
       placeholder: "",
+      value: form.amount,
     },
   ];
 
   return (
-    <div className="mt-5">
+    <div className="">
       {resp.message && (
         <Alert variant={resp.status === "success" ? "success" : ""}>
           {resp.message}
@@ -61,10 +70,10 @@ const TransForm = ({getAllTrans}) => {
       )}
       <Form className="shadow-lg border rounded p-3" onSubmit={handelOnSubmit}>
         <Row>
-          <Col md={2}>
+          <Col md={3}>
             <Form.Group className="mb-3">
               <Form.Label>Type</Form.Label>
-              <Form.Select onChange={handelOnChange} name="type" required>
+              <Form.Select onChange={handelOnChange} name="type" value={form.type} required>
                 <option value=""> --select--</option>
                 <option value="income"> --Income--</option>
                 <option value="expenses"> --Expenses--</option>
@@ -73,11 +82,12 @@ const TransForm = ({getAllTrans}) => {
           </Col>
           {inputs.map((item, i) => (
             <Col md={2} key={i}>
+              {console.log("Data: ", item)}
               <CustomeInput {...item} onChange={handelOnChange} />
             </Col>
           ))}
 
-          <Col md={4}>
+          <Col md={2}>
             <Form.Group className="mb-3">
               <Form.Label></Form.Label>
               <div className="d-grid mt-2">
