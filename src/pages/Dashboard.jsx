@@ -20,8 +20,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
-      <></>
+    <div className="bg-dark">
       {/* navbar */}
       <TopNav />
       <Container fluid>

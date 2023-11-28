@@ -16,19 +16,17 @@ const TopNav = () => {
     return (
         <Navbar expand="md" className="bg-info">
             <Container fluid>
-                <Navbar.Brand href="#home">Transaction Record Management</Navbar.Brand>
+                <Navbar.Brand href="">Transaction Record Management</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
                         {userObj?._id ? (
                             <Link to="/" className="nav-link" onClick={handelOnLogout}>Log Out</Link>)
                             : <>
-                                <Link to="/" className="nav-link">Signin</Link>
+                                <Link to="/" className="nav-link">Login</Link>
                                 <Link to="/signup" className="nav-link">Signup</Link>
                             </>
                         }
-
-
                     </Nav>
                 </Navbar.Collapse>
             </Container>

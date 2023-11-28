@@ -8,7 +8,7 @@ const PrivateRoute = ({children}) => {
     const userObj = JSON.parse(userJson)
 
     //checking auth
-    const auth = userObj?._id;;
+    const auth = userObj?._id;
     
   return auth ? children : <Navigate to ="/"/>
 }

@@ -65,7 +65,6 @@ const SignupForm = () => {
 
   const handelOnSubmit = async(e) => {
     e.preventDefault();
-    console.log(form);
     const { confirmPassword, ...rest } = form;
 
     //let's check password if they match

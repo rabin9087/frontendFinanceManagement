@@ -65,7 +65,7 @@ const LoginForm = () => {
       ))}
       <div className="d-grid">
         <Button variant="primary" type="submit" disabled={isLoading}>
-          {isLoading ? <Spinner animation="border" /> : "Submit"}
+          {isLoading ? <Spinner animation="border" /> : "Login"}
         </Button>
       </div>
       <p>

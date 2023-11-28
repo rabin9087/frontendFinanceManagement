@@ -54,8 +54,8 @@ const TransTable = ({ transList, getAllTrans }) => {
         </h1>
       </div>
 
-      <div className="text-center fw-bold">
-        <span className="text-success text-lg"> {transList.length}</span>{" "}
+      <div className="text-center text-warning fw-bold mb-2">
+        <span className="text-light text-lg"> {transList.length}</span>{" "}
         Transaction Record Found
       </div>
 
@@ -114,6 +114,7 @@ const TransTable = ({ transList, getAllTrans }) => {
           ))}
 
           <tr className="fw-bolder">
+            <td></td>
             <td colSpan={3} className="text-end">
               Total Balance
             </td>
